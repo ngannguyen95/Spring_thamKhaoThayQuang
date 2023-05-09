@@ -26,7 +26,7 @@
             <td>
                 <input type="radio" name="sex" id="male" checked>
                 <lable for="male">Male</lable>
-                <input type="radio" name="sex" id="female" checked>
+                <input type="radio" name="sex" id="female" checked >
                 <lable for="female">Female</lable>
             </td>
         </tr>
@@ -47,6 +47,7 @@
                 </select>
             </td>
         </tr>
+
         <tr>
             <td colspan="">
                 <input type="submit" value="Create">

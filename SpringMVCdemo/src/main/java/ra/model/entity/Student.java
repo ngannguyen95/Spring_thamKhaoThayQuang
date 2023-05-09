@@ -1,5 +1,8 @@
 package ra.model.entity;
 
+
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Student {
@@ -7,6 +10,7 @@ public class Student {
     private String name;
     private int age;
     private boolean sex;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birthDate;
     private String address;
     private boolean status;
@@ -14,12 +18,12 @@ public class Student {
     public Student() {
     }
 
-    public Student(int id, String name, int age, boolean sex, Date birtDate, String address, boolean status) {
+    public Student(int id, String name, int age, boolean sex, Date birthDate, String address, boolean status) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.sex = sex;
-        this.birthDate = birtDate;
+        this.birthDate = birthDate;
         this.address = address;
         this.status = status;
     }
@@ -56,12 +60,12 @@ public class Student {
         this.sex = sex;
     }
 
-    public Date getbirtDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setbirtDate(Date date) {
-        this.birthDate = date;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getAddress() {

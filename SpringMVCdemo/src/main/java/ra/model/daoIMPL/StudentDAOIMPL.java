@@ -28,7 +28,7 @@ public class StudentDAOIMPL implements IStudentDAO {
                 student.setName(rs.getString("name"));
                 student.setAge(rs.getInt("age"));
                 student.setAddress(rs.getString("address"));
-                student.setbirtDate(rs.getDate("birthDate"));
+                student.setBirthDate(rs.getDate("birthDate"));
                 student.setStatus(rs.getBoolean("status"));
                 studentList.add(student);
             }
@@ -56,7 +56,7 @@ public class StudentDAOIMPL implements IStudentDAO {
                 student.setName(rs.getString("name"));
                 student.setAge(rs.getInt("age"));
                 student.setAddress(rs.getString("address"));
-                student.setbirtDate(rs.getDate("birthDate"));
+                student.setBirthDate(rs.getDate("birthDate"));
                 student.setStatus(rs.getBoolean("status"));
             }
         } catch (SQLException e) {
@@ -79,7 +79,7 @@ public class StudentDAOIMPL implements IStudentDAO {
             callSt.setInt(2, st.getAge());
             callSt.setBoolean(3, st.isSex());
             callSt.setString(4, st.getAddress());
-            callSt.setDate(5, new Date(st.getbirtDate().getTime()));
+            callSt.setDate(5, new Date(st.getBirthDate().getTime()));
             callSt.setBoolean(6, st.isStatus());
             callSt.executeUpdate();
             result = true;
@@ -104,7 +104,7 @@ public class StudentDAOIMPL implements IStudentDAO {
             callSt.setInt(3, st.getAge());
             callSt.setBoolean(4, st.isSex());
             callSt.setString(5, st.getAddress());
-            callSt.setDate(6, new Date(st.getbirtDate().getTime()));
+            callSt.setDate(6,new Date(st.getBirthDate().getTime()));
             callSt.setBoolean(7, st.isStatus());
             callSt.executeUpdate();
             result = true;

@@ -2,11 +2,9 @@ package ra.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import ra.model.entity.Student;
 import ra.model.serviceIMPL.StudentServiceIMPL;
@@ -35,18 +33,45 @@ public class StudentController {
     }
 
     @GetMapping("initCreate")
-    public String initCreate(ModelMap ma) {
+    public String initCreate(Model model) {
         Student stNew = new Student();
-        ma.addAttribute("stNew", stNew);
+        model.addAttribute("stNew", stNew);
         return "studentNew";
     }
+
     @PostMapping("create")
-    public String createStudent(@ModelAttribute("stnew") Student stNew){
-       boolean result =studentServiceIMPL.save(stNew);
-       if (result){
-           return "redirect:getAll";
-       }else {
-           return "error";
-       }
+    public String createStudent(@ModelAttribute("stNew") Student stNew) {
+        boolean result = studentServiceIMPL.save(stNew);
+        if (result) {
+            return "redirect:getAll";
+        } else {
+            return "error";
+        }
+    }
+
+    @GetMapping("initUpdate")
+    public String initUpdate(Model model, int id) {
+        Student stUpdate = studentServiceIMPL.findById(id);
+        model.addAttribute("stUpdate", stUpdate);
+        return "studentUpdate";
+    }
+
+    @PostMapping("update")
+    public String updateStudent(Student stUpdate){
+        boolean result = studentServiceIMPL.update(stUpdate);
+        if (result){
+            return "redirect:getAll";
+        }else{
+            return "error";
+        }
+    }
+    @GetMapping("delete")
+    public String deleteStudent(int id){
+        boolean result = studentServiceIMPL.delete(id);
+        if (result){
+            return "redirect:getAll";
+        }else {
+            return "error";
+        }
     }
 }
